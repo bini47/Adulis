@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this,SignUp.class);
+                Intent i = new Intent(HomeActivity.this,login.class);
                 startActivity(i);
             }
         });
