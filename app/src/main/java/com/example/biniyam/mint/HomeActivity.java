@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -26,47 +29,36 @@ import com.example.biniyam.mint.CartalogeAdaprter.MyCatalogue;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends Fragment {
 
     Button comments;
     ImageButton dashboard;
     LinearLayout signup;
     SliderLayout sliderLayout;
-    RecyclerView trendingRecycler, recomendedRecycler,featuredRecycler,topProducersresycler;
+    RecyclerView trendingRecycler, recomendedRecycler, featuredRecycler, topProducersresycler;
+    View rootView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        rootView = inflater.inflate(R.layout.content_home, container, false);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        signup = (LinearLayout) rootView.findViewById(R.id.toTheSignUp);
+        comments = (Button) rootView.findViewById(R.id.toTheComments);
+        dashboard = (ImageButton) rootView.findViewById(R.id.toTheDashboard);
+        trendingRecycler = (RecyclerView) rootView.findViewById(R.id.trendingRecycler);
+        recomendedRecycler = (RecyclerView) rootView.findViewById(R.id.recomendedRecycler);
+        featuredRecycler = (RecyclerView) rootView.findViewById(R.id.featuredRecycler);
+        topProducersresycler = (RecyclerView) rootView.findViewById(R.id.topproducersRecycler);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        signup= (LinearLayout) findViewById(R.id.toTheSignUp);
-        comments= (Button)findViewById(R.id.toTheComments);
-        dashboard=(ImageButton) findViewById(R.id.toTheDashboard);
-        trendingRecycler=(RecyclerView) findViewById(R.id.trendingRecycler);
-        recomendedRecycler=(RecyclerView) findViewById(R.id.recomendedRecycler);
-        featuredRecycler=(RecyclerView) findViewById(R.id.featuredRecycler);
-        topProducersresycler=(RecyclerView) findViewById(R.id.topproducersRecycler);
-
-        sliderLayout= (SliderLayout)findViewById(R.id.slider);
+        sliderLayout = (SliderLayout) rootView.findViewById(R.id.slider);
 
 
-        TextSliderView textSliderView1= new TextSliderView(this);
-        TextSliderView textSliderView2= new TextSliderView(this);
-        TextSliderView textSliderView3= new TextSliderView(this);
+        TextSliderView textSliderView1 = new TextSliderView(getContext());
+        TextSliderView textSliderView2 = new TextSliderView(getContext());
+        TextSliderView textSliderView3 = new TextSliderView(getContext());
 
 
         textSliderView1.description("im commin").image(R.drawable.banner1).setScaleType(BaseSliderView.ScaleType.Fit);
@@ -77,11 +69,10 @@ public class HomeActivity extends AppCompatActivity
         sliderLayout.addSlider(textSliderView3);
 
 
-        ArrayList<String> pnames= new ArrayList<>();
-        ArrayList<String> price= new ArrayList<>();
-        ArrayList<Integer> productPics= new ArrayList<>();
-        ArrayList<Integer> rating= new ArrayList<>();
-
+        ArrayList<String> pnames = new ArrayList<>();
+        ArrayList<String> price = new ArrayList<>();
+        ArrayList<Integer> productPics = new ArrayList<>();
+        ArrayList<Integer> rating = new ArrayList<>();
 
 
 
@@ -89,7 +80,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this,login.class);
+                Intent i = new Intent(getActivity(),login.class);
                 startActivity(i);
             }
         });
@@ -98,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this,Comments.class);
+                Intent i = new Intent(getActivity(),Comments.class);
                 startActivity(i);
             }
         });
@@ -106,7 +97,7 @@ public class HomeActivity extends AppCompatActivity
         dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this, Dashboard.class);
+                Intent i = new Intent(getActivity(), Dashboard.class);
                 startActivity(i);
             }
         });
@@ -141,17 +132,16 @@ public class HomeActivity extends AppCompatActivity
         productPics.add(R.drawable.tight_);
 
 
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(),LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getBaseContext(),LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager linearLayoutManager3= new LinearLayoutManager(getBaseContext(),LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager linearLayoutManager4 = new LinearLayoutManager(getBaseContext(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager4 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         trendingRecycler.setLayoutManager(linearLayoutManager);
         recomendedRecycler.setLayoutManager(linearLayoutManager2);
         featuredRecycler.setLayoutManager(linearLayoutManager3);
         topProducersresycler.setLayoutManager(linearLayoutManager4);
 
-        MyCatalogue myCatalogue = new MyCatalogue(this,pnames,price,rating,productPics);
+        MyCatalogue myCatalogue = new MyCatalogue(getContext(), pnames, price, rating, productPics);
         trendingRecycler.setAdapter(myCatalogue);
         recomendedRecycler.setAdapter(myCatalogue);
         featuredRecycler.setAdapter(myCatalogue);
@@ -159,62 +149,9 @@ public class HomeActivity extends AppCompatActivity
 
         myCatalogue.notifyDataSetChanged();
 
+        return rootView;
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }
