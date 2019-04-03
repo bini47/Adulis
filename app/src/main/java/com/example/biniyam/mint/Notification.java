@@ -36,14 +36,6 @@ public class Notification extends Fragment {
         recyclerView= (RecyclerView) rootView.findViewById(R.id.notification_recycler);
 
 
-
-
-
-
-
-
-
-
         iconsId.add(R.drawable.ic_delete);
         iconsId.add(R.drawable.ic_update);
         iconsId.add(R.drawable.ic_add_image);
