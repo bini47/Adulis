@@ -5,17 +5,15 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.biniyam.mint.Retrofit.IMyservice;
+import com.example.biniyam.mint.Retrofit.AdulisApi;
 import com.example.biniyam.mint.Retrofit.RetrofitClient;
 
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -28,7 +26,7 @@ public class login extends AppCompatActivity {
     EditText email,password;
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-    IMyservice iMyservice;
+    AdulisApi adulisApi;
 
     @Override
     protected void onStop() {
@@ -43,7 +41,7 @@ public class login extends AppCompatActivity {
 
         //INIT SERVIE
         Retrofit retrofitClient= RetrofitClient.getInstance();
-        iMyservice = retrofitClient.create(IMyservice.class);
+        adulisApi = retrofitClient.create(AdulisApi.class);
 
 
         email = (EditText) findViewById(R.id.usrusr);
@@ -88,7 +86,7 @@ public class login extends AppCompatActivity {
             return;
         }
 
-        compositeDisposable.add(iMyservice.loginUser(email,password)
+        compositeDisposable.add(adulisApi.loginUser(email,password)
                 .subscribeOn(Schedulers.io())
                        .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {

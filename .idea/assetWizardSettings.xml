@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/home/biniyam/Public/apps/android-studio/android-studio-ide-173.4819257-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/file/ic_create_new_folder_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/home/biniyam/Public/apps/android-studio/android-studio-ide-173.4819257-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_date_range_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -44,7 +44,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_amount" />
+                                      <entry key="outputName" value="ic_date" />
                                       <entry key="themeColor" value="d6d7da" />
                                     </map>
                                   </option>

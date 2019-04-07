@@ -3,6 +3,7 @@ package com.example.biniyam.mint;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -36,10 +37,14 @@ public class Shop extends Fragment {
      */
     private View rootView;
     private ViewPager mViewPager;
+    Bundle bundle = new Bundle();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         rootView = inflater.inflate(R.layout.activity_shop, container, false);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -50,18 +55,12 @@ public class Shop extends Fragment {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         return  rootView;
     }
@@ -131,19 +130,25 @@ public class Shop extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new HomeActivity();
+                    AllProducts products= new AllProducts();
+                    bundle.putString("cata", "all");
+                    products.setArguments(bundle);
+                    return new AllProducts();
 
                 case 1:
-                    return new HomeActivity();
+                    return new AllProducts();
 
                 case 2:
-                    return new HomeActivity();
+                    return new AllProducts();
                 case 3:
-                    return new HomeActivity();
+                    return new AllProducts();
                 case 4:
-                    return new HomeActivity();
+                    return new AllProducts();
                 case 5:
-                    return new HomeActivity();
+                    return new AllProducts();
+                case 6:
+                    return new AllProducts();
+
 
             }
             return null;

@@ -13,18 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.biniyam.mint.Interface.IItemClickListner;
 import com.example.biniyam.mint.R;
 
 import java.util.ArrayList;
 
- class catalogueAdapter extends RecyclerView.ViewHolder {
+ class catalogueAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public ImageView productPic, rating[];
     public TextView pname, price;
 
 
+     IItemClickListner itemClickListner;
+
+     public void setItemClickListner(IItemClickListner itemClickListner) {
+         this.itemClickListner = itemClickListner;
+     }
     public catalogueAdapter(@NonNull View itemView) {
         super(itemView);
 
@@ -40,7 +47,13 @@ import java.util.ArrayList;
 
 
     }
-}
+
+     @Override
+     public void onClick(View view) {
+
+         itemClickListner.onClick(view);
+     }
+ }
 
  public  class MyCatalogue extends RecyclerView.Adapter<catalogueAdapter> {
     @NonNull
@@ -84,6 +97,12 @@ import java.util.ArrayList;
              holder.rating[j].setImageDrawable(BgCenter(R.drawable.star1));
          }
 
+        holder.setItemClickListner(new IItemClickListner() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

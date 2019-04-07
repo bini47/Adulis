@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar 
+android:theme="@style/ThemeOverlay.AppCompat.Light"
+android:id="@id/toolbar" android:background="?colorPrimary"
+ android:layout_width="fill_parent"
+  android:layout_height="?actionBarSize" 
+  app:contentInsetStartWithNavigation="0.0dip"
+   app:paddingEnd="@dimen/spacing_medium"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto" />
