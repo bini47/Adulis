@@ -12,6 +12,7 @@ import retrofit2.Retrofit;
 public class Common {
 
     public static String currentProductId = null;
+    public static String currentUsertoken=null;
     public static AdulisApi getApi(){
         return  RetrofitClient.getInstance().create(AdulisApi.class);
     }

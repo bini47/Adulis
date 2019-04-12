@@ -38,4 +38,25 @@
         /n ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem
         ipsumdonor ement some leorem ipsumdonor ement some leoremipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome
         leorem ipsumdonor ementsome leorem ipsumdonor ement</string>
+
+
+    <!--login strings-->
+    <string name="booki">BookI</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="read_it_together">Read it together</string>
+    <string name="skip">Skip</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forget_password">Forget Password.?</string>
+    <string name="signup_txt">Sign-up</string>
+    <string name="join_adnulis">Become a member now</string>
+    <string name="already_has_account">Already has an account? Login.</string>
+    <string name="signup">Sign-up</string>
+    <string name="fname">Firstname</string>
+    <string name="lname">Lastname</string>
+    <string name="phone">Phone</string>
+    <string name="password2">Confirm password</string>
+    <string name="didnothavanaccount">Don\'t have an account? Sign up.</string>
 </resources>

@@ -15,6 +15,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Model.Product.Cart;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
 
@@ -86,25 +87,25 @@ public class SingleProduct extends AppCompatActivity {
     }
 
     private void addProductToCart(String id) {
-        compositeDisposable.add(adulisApi.addToCart()
+
+        compositeDisposable.add(adulisApi.addToCart(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        new Consumer<List<Product>>() {
+                        new Consumer<Cart>() {
                             @Override
-                            public void accept(List<Product> products) throws Exception {
+                            public void accept(Cart cart) throws Exception {
+                                Toast.makeText(SingleProduct.this, String.valueOf(cart.getTotalPrice()), Toast.LENGTH_SHORT).show();
 
-                                displayProductList(products);
                             }
+
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                refresh.setRefreshing(false);
-                                //TODO: convert this toa modified view
-                                Toast.makeText(getContext(), throwable +" Error while loading products", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SingleProduct.this,throwable.getMessage() , Toast.LENGTH_SHORT).show();
+
                             }
                         }));
-
     }
 
     private void fetchProduct(String id) {

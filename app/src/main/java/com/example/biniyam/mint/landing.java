@@ -10,14 +10,28 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Model.Product.CartAmount;
+import com.example.biniyam.mint.Model.Product.SingleProduct;
+import com.example.biniyam.mint.Retrofit.AdulisApi;
+
+import io.reactivex.disposables.CompositeDisposable;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class landing extends AppCompatActivity {
 
     Toolbar toolbar;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    AdulisApi adulisApi;
+
     private BottomNavigationView bottomnav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +40,7 @@ public class landing extends AppCompatActivity {
          toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        adulisApi = Common.getApi();
 
 
         bottomnav = (BottomNavigationView)findViewById(R.id.bottomnavigationview);
@@ -35,6 +50,9 @@ public class landing extends AppCompatActivity {
         loadFragment(new HomeActivity());
 
     }
+
+
+
     BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationSelectedListner
             =new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

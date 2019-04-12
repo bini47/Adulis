@@ -2,7 +2,12 @@
 <resources>
     <color name="colorPrimary">#F5F5F5</color>
     <color name="colorPrimaryDark">#DBDBDB</color>
-    <color name="colorAccent">#2e96db</color>
+    <color name="colorAccent">#B9BBBD</color>
+    <!--login colors-->
+    <color name="colorBackground">#333C46</color>
+    <color name="colorSplashText">#F0F0F0</color>
+    <color name="colorProgressBar">#FFCE511C</color>
+    <color name="colorTextView">#83898E</color>
     <!--colors for specific attribute-->
     <color name="colorAddCart">#ffffb300</color>
     <color name="grey_40">#ff999999</color>
@@ -13,6 +18,8 @@
     <color name="grey_5">#fff2f2f2</color>
     <color name="grey_80">#ff37474f</color>
     <color name="grey_3">#fff7f7f7</color>
+
+
 
 
 
