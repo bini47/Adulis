@@ -1,7 +1,7 @@
 package com.example.biniyam.mint.Retrofit;
 
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
@@ -10,9 +10,9 @@ public class RetrofitClient {
     public static Retrofit getInstance(){
         if(instance == null)
             instance= new Retrofit.Builder()
-                    .baseUrl("http://10.194.137.93:5000")
+                    .baseUrl("http://192.168.44.125:5000")
                     .addConverterFactory(ScalarsConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
 
         return instance;

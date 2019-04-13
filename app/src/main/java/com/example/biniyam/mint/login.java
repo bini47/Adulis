@@ -90,10 +90,11 @@ public class login extends AppCompatActivity {
 
         compositeDisposable.add(iMyservice.loginUser(email,password)
                 .subscribeOn(Schedulers.io())
-                       .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
+                       .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String res) throws Exception {
-                        Toast.makeText(login.this, "success:"+ res, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "success:"+ res, Toast.LENGTH_SHORT).show();
                     }
                 }));
 

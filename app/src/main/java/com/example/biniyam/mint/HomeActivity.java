@@ -85,6 +85,7 @@ public class HomeActivity extends Fragment {
             }
         });
 
+
         comments.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -151,6 +152,9 @@ public class HomeActivity extends Fragment {
 
         return rootView;
     }
+
+
+
 
 
 
