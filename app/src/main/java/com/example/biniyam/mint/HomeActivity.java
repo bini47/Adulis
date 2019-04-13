@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,13 +22,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.biniyam.mint.CartalogeAdaprter.MyCatalogue;
+import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Model.Product.CartAmount;
+import com.example.biniyam.mint.Model.Product.Product;
+import com.example.biniyam.mint.Retrofit.AdulisApi;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends Fragment {
 
@@ -37,6 +52,8 @@ public class HomeActivity extends Fragment {
     SliderLayout sliderLayout;
     RecyclerView trendingRecycler, recomendedRecycler, featuredRecycler, topProducersresycler;
     View rootView;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    AdulisApi adulisApi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +61,7 @@ public class HomeActivity extends Fragment {
 
         rootView = inflater.inflate(R.layout.content_home, container, false);
 
-
+        adulisApi = Common.getApi();
         signup = (LinearLayout) rootView.findViewById(R.id.toTheSignUp);
         comments = (Button) rootView.findViewById(R.id.toTheComments);
         dashboard = (ImageButton) rootView.findViewById(R.id.toTheDashboard);
@@ -54,7 +71,7 @@ public class HomeActivity extends Fragment {
         topProducersresycler = (RecyclerView) rootView.findViewById(R.id.topproducersRecycler);
 
         sliderLayout = (SliderLayout) rootView.findViewById(R.id.slider);
-
+        loadTotalCartAmount();
 
         TextSliderView textSliderView1 = new TextSliderView(getContext());
         TextSliderView textSliderView2 = new TextSliderView(getContext());
@@ -156,6 +173,27 @@ public class HomeActivity extends Fragment {
 
 
 
+    private void loadTotalCartAmount() {
+
+        compositeDisposable.add(adulisApi.getTotalCartAmount()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                               @Override
+                               public void accept(String s) throws Exception {
+                                   Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                               }
+                           }, new Consumer<Throwable>() {
+                               @Override
+                               public void accept(Throwable throwable) throws Exception {
+                                   Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                               }
+                           }
+
+                ));
 
 
+
+
+    }
 }
