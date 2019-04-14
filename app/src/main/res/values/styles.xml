@@ -31,7 +31,22 @@
     <style name="ProgressBarStyle">
         <item name="colorAccent">@color/colorProgressBar</item>
     </style>
+    <style name="Toolbar.Light" parent="@style/AppTheme">
+        <item name="android:textColorPrimary">@color/grey_60</item>
+        <item name="colorControlNormal">@color/grey_60</item>
+    </style>
 
+    <style name="EditText.Flat.Grey.Small" parent="@style/AppTheme">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/grey_90</item>
+        <item name="android:textColorHint">@color/grey_40</item>
+    </style>
+    <style name="RippleStyleWhite">
+        <item name="mrl_rippleAlpha">0.2</item>
+        <item name="mrl_rippleColor">#80ffffff</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleOverlay">true</item>
+    </style>
 </resources>
 
 

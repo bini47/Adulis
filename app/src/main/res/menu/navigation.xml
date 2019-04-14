@@ -9,17 +9,21 @@
     <item
         android:id="@+id/dashboard_nav"
         android:icon="@drawable/ic_dashboard"
-        android:title="dshboard"
+        android:title="Shop"
         />
     <item
         android:id="@+id/order_nav"
         android:icon="@drawable/ic_order"
-        android:title="Recharge"
+        android:title="Orders"
         />
     <item
         android:id="@+id/cart_nav"
         android:icon="@drawable/ic_cart"
-        android:title="cart"
+        android:title="Notificatopm"
         />
-
+    <item
+        android:id="@+id/profile_nav"
+        android:icon="@drawable/ic_update"
+        android:title="Profile"
+        />
 </menu>

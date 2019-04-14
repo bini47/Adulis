@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -27,8 +26,6 @@ import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Model.User.User.Login;
 import com.example.biniyam.mint.Model.User.User.User;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -115,7 +112,7 @@ public class login extends AppCompatActivity {
                 //view smooth animation
 
                 colorAnimation.start();
-                bookIconImageView.setImageResource(R.drawable.background_color_book);
+                bookIconImageView.setImageResource(R.drawable.ic_action_plus);
                 startAnimation();
             }
         }.start();
