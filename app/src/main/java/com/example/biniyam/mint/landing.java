@@ -73,7 +73,11 @@ public class landing extends AppCompatActivity {
                     toolbar.setTitle("notification");
                     loadFragment(new Notification());
                     return true;
-
+                case R.id.profile_nav:
+                    getSupportActionBar().show();
+                    toolbar.setTitle("Profile");
+                    loadFragment(new Profile());
+                    return true;
             }
 
             return false;
