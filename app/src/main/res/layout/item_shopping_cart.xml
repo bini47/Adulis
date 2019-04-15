@@ -44,6 +44,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:text="Praesent Vitae"
+                        android:id="@+id/pname"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/grey_90"
                         app:fontFamily="sans-serif-medium" />
@@ -52,6 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$14.32"
+                        android:id="@+id/price"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@color/light_green_500" />
 
@@ -71,7 +73,7 @@
                             android:layout_height="@dimen/spacing_xlarge"
                             android:background="?selectableItemBackgroundBorderless"
                             android:tint="@color/grey_40"
-                            app:srcCompat="@drawable/ic_remove" />
+                            android:src="@drawable/ic_remove" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -80,6 +82,7 @@
                             android:layout_marginRight="@dimen/spacing_large"
                             android:gravity="center_vertical"
                             android:text="01"
+                            android:id="@+id/amount"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/grey_40"
                             app:fontFamily="sans-serif-medium" />
@@ -87,6 +90,7 @@
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/spacing_xlarge"
+                            android:id="@+id/image"
                             android:background="?selectableItemBackgroundBorderless"
                             android:tint="@color/grey_40"
                             app:srcCompat="@drawable/ic_add" />

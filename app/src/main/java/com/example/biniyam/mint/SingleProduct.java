@@ -87,8 +87,8 @@ public class SingleProduct extends AppCompatActivity {
     }
 
     private void addProductToCart(String id) {
-
-        compositeDisposable.add(adulisApi.addToCart(id)
+        String sid="s%3ALbeHWp4NrEI-TcYTqpjGe3YGOqdjZU3S.IP62nRXNcWjR%2F8AUO5gKFNDcdhOINiaxNQn%2FxlMrF0s";
+        compositeDisposable.add(adulisApi.addToCart(id, sid )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
