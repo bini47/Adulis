@@ -34,7 +34,6 @@ public interface AdulisApi {
     Call<SingleProduct> getSingleProduct(@Path("id")String pid);
 
     @GET("/mobile-api/add-to-cart/{id}")
-
     Observable<Cart> addToCart(@Path("id")String pid);
 
     @GET("/mobile-api/cart-total-qty")
