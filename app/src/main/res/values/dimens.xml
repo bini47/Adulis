@@ -174,7 +174,6 @@
     <dimen name="spacing_large">15.0dip</dimen>
     <dimen name="spacing_medium">5.0dip</dimen>
     <dimen name="spacing_middle">10.0dip</dimen>
-    <dimen name="spacing_smlarge">18.0dip</dimen>
 
     <dimen name="spacing_mlarge">20.0dip</dimen>
     <dimen name="spacing_mxlarge">25.0dip</dimen>
@@ -194,4 +193,5 @@
     <dimen name="tooltip_y_offset_touch">16.0dip</dimen>
     <dimen name="wishlist_item_img">50.0dip</dimen>
     <dimen name="fab_margin">16dip</dimen>
+    <dimen name="spacing_smlarge">18.0dip</dimen>
 </resources>

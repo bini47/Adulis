@@ -3,30 +3,38 @@ package com.example.biniyam.mint.Model.Product;
 import java.util.List;
 
 public class Cart {
-    public List<CartProduct> products;
-    public double totalPrice;
+        public int totalPrice;
+        public int totalQty;
+        public Product items;
 
-    public Cart() {
+        public Cart(int totalPrice, int totalQty, Product items) {
+            this.totalPrice = totalPrice;
+            this.totalQty = totalQty;
+            this.items = items;
+        }
+
+        public int getTotalPrice() {
+            return totalPrice;
+        }
+
+        public void setTotalPrice(int totalPrice) {
+            this.totalPrice = totalPrice;
+        }
+
+        public int getTotalQty() {
+            return totalQty;
+        }
+
+        public void setTotalQty(int totalQty) {
+            this.totalQty = totalQty;
+        }
+
+        public Product getItems() {
+            return items;
+        }
+
+        public void setItems(Product items) {
+            this.items = items;
+        }
     }
 
-    public Cart(List<CartProduct> products, double totalPrice) {
-        this.products = products;
-        this.totalPrice = totalPrice;
-    }
-
-    public List<CartProduct> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<CartProduct> products) {
-        this.products = products;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-}

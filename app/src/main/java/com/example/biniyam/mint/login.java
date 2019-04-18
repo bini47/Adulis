@@ -5,7 +5,10 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -23,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Common.CurrentUser;
 import com.example.biniyam.mint.Model.User.User.Login;
 import com.example.biniyam.mint.Model.User.User.User;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
@@ -44,6 +48,10 @@ public class login extends AppCompatActivity {
     private Button loginButton;
     AdulisApi adulisApi;
     ImageView back;
+    CurrentUser currentUser;
+    Context mcontext;
+    final Activity activity=this;
+
 
 
     @Override
@@ -57,6 +65,9 @@ public class login extends AppCompatActivity {
         initViews();
         initAnims();
         adulisApi = Common.getApi();
+         mcontext= login.this;
+        currentUser = new CurrentUser(com.example.biniyam.mint.login.this);
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +157,7 @@ public class login extends AppCompatActivity {
     }
 
     private void logInUser(String email, String password) {
-        Login login = new Login( email,password);
+        final Login login = new Login( email,password);
         Call<User> call = adulisApi.loginUser(login);
         call.enqueue(new Callback<User>() {
             @Override
@@ -154,9 +165,13 @@ public class login extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     //GET THE USERS TOKEN BARYER AND SEND IT TO THE DECODING ROUTE
                     try{
-                        //TODO: STORE THIS TOKEN IN A SHAREDPRFERENCE
-                    Common.currentUsertoken = response.body().getToken();
-                    getUser(response.body().getToken());
+                        //TODO: CHANGE THIS WHEN YOU CHANGE THE PACKAGE
+                        SharedPreferences token = mcontext.getSharedPreferences("com.example.biniyam.mint", Context.MODE_PRIVATE);
+                        token.edit().putString("token",  response.body().getToken()).apply();
+                        Intent home = new Intent(mcontext,landing.class);
+                        startActivity(home);
+                        activity.finish();
+                    //getUser(response.body().getToken());
                     }catch(Exception e){
                         e.printStackTrace();
                     }

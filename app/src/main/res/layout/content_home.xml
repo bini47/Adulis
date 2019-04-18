@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-   >
-
+    android:layout_marginBottom="0dp"
+    android:layout_height="wrap_content">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginBottom="0dp"
             android:orientation="vertical">
 
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                >
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slider"
@@ -38,181 +40,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-                    app:layout_constraintVertical_bias="0.0"/>
+                    app:layout_constraintTop_toBottomOf="@+id/signup_btn"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
 
                 <LinearLayout
-                    android:id="@+id/linearLayout4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/slider">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:orientation="vertical">
-
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="45sp"
-                            android:layout_height="45sp"
-
-                            app:cardBackgroundColor="#fec131"
-                            app:cardCornerRadius="22.5dp"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="30sp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_new" />
-
-
-                        </android.support.v7.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="New"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-
-                        android:layout_weight="1" />
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-
-                            app:cardBackgroundColor="#3dcd5a"
-                            app:cardCornerRadius="22.5dp"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_clerance_sell" />
-
-                        </android.support.v7.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Clerance sell"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-
-                            app:cardBackgroundColor="#19b9e3"
-                            app:cardCornerRadius="22.5dp"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_discount" />
-
-                        </android.support.v7.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Discount window"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            app:cardBackgroundColor="#fa7436"
-                            app:cardCornerRadius="22.5dp"
-                            app:cardElevation="0dp"
-                            tools:layout_editor_absoluteX="26dp"
-                            tools:layout_editor_absoluteY="34dp">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_feaured" />
-
-                        </android.support.v7.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Featured"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearLayout3"
+                    android:id="@+id/signup_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -303,9 +137,9 @@
                         android:id="@+id/toTheSignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -362,52 +196,29 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/linearLayout5"
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/topproducersRecycler"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
 
-                        <Button
-                            android:id="@+id/toTheComments"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/toTheSignUp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-
-                            android:text="On to Comments sir" />
-
-                    </LinearLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
+
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="16dp"
-
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/slider"
 
                     >
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -415,20 +226,19 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                        >
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
 
                         <TextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
                             android:gravity="center"
                             android:text="OUR POPULAR PRODUCTS"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="5dp"
 
                             />
                     </LinearLayout>
@@ -440,10 +250,10 @@
                     android:id="@+id/trendingRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10">
 
@@ -455,17 +265,17 @@
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/trendingRecycler"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
-                    >
+                    app:layout_constraintTop_toBottomOf="@+id/trendingRecycler">
+
                     <TextView
 
                         android:layout_width="wrap_content"
@@ -473,13 +283,13 @@
 
                         android:text="Recomended"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
+                        android:layout_weight="1" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -495,11 +305,11 @@
                     android:id="@+id/recomendedRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView11">
@@ -512,18 +322,16 @@
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recomendedRecycler"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    >
-
+                    app:layout_constraintTop_toBottomOf="@+id/recomendedRecycler">
 
 
                     <TextView
@@ -533,14 +341,13 @@
 
                         android:text="Featured"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
+                        android:layout_weight="1" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -551,16 +358,17 @@
 
 
                 </LinearLayout>
+
                 <android.support.v7.widget.RecyclerView
 
                     android:id="@+id/featuredRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView12">
@@ -573,11 +381,11 @@
                     android:id="@+id/topproducersRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView14">
@@ -590,18 +398,16 @@
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/featuredRecycler"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    >
-
+                    app:layout_constraintTop_toBottomOf="@+id/featuredRecycler">
 
 
                     <TextView
@@ -611,13 +417,13 @@
 
                         android:text="Top producers"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
+                        android:layout_weight="1" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -635,73 +441,6 @@
 
     </ScrollView>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-
-                android:src="@drawable/ic_home" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/toTheDashboard"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-
-                android:src="@drawable/ic_dashboard" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-
-                android:layout_weight="1" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-
-                android:src="@drawable/ic_order" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-
-                android:layout_weight="1" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-
-                android:src="@drawable/ic_cart" />
-
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
 
 
 </android.support.constraint.ConstraintLayout>

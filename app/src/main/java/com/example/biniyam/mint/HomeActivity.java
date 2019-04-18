@@ -29,6 +29,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.biniyam.mint.CartalogeAdaprter.MyCatalogue;
 import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Common.CurrentUser;
 import com.example.biniyam.mint.Model.Product.CartAmount;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
@@ -54,6 +55,7 @@ public class HomeActivity extends Fragment {
     View rootView;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     AdulisApi adulisApi;
+    CurrentUser currentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,8 +65,7 @@ public class HomeActivity extends Fragment {
 
         adulisApi = Common.getApi();
         signup = (LinearLayout) rootView.findViewById(R.id.toTheSignUp);
-        comments = (Button) rootView.findViewById(R.id.toTheComments);
-        dashboard = (ImageButton) rootView.findViewById(R.id.toTheDashboard);
+        //comments = (Button) rootView.findViewById(R.id.toTheComments);
         trendingRecycler = (RecyclerView) rootView.findViewById(R.id.trendingRecycler);
         recomendedRecycler = (RecyclerView) rootView.findViewById(R.id.recomendedRecycler);
         featuredRecycler = (RecyclerView) rootView.findViewById(R.id.featuredRecycler);
@@ -76,6 +77,13 @@ public class HomeActivity extends Fragment {
         TextSliderView textSliderView1 = new TextSliderView(getContext());
         TextSliderView textSliderView2 = new TextSliderView(getContext());
         TextSliderView textSliderView3 = new TextSliderView(getContext());
+
+         currentUser = new CurrentUser(getContext());
+         String token = currentUser.getToken();
+         if(!token.equals("")){
+             currentUser.getCurrentUser(token);
+             signup.setVisibility(View.GONE);
+         }
 
 
         textSliderView1.description("im commin").image(R.drawable.banner1).setScaleType(BaseSliderView.ScaleType.Fit);
@@ -103,22 +111,7 @@ public class HomeActivity extends Fragment {
         });
 
 
-        comments.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(),Comments.class);
-                startActivity(i);
-            }
-        });
-
-        dashboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), Dashboard.class);
-                startActivity(i);
-            }
-        });
 
         pnames.add("hert shaped");
         pnames.add("workout tights");

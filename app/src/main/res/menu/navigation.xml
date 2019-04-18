@@ -8,7 +8,7 @@
         />
     <item
         android:id="@+id/dashboard_nav"
-        android:icon="@drawable/ic_dashboard"
+        android:icon="@drawable/ic_store"
         android:title="Shop"
         />
     <item
@@ -18,12 +18,12 @@
         />
     <item
         android:id="@+id/cart_nav"
-        android:icon="@drawable/ic_cart"
+        android:icon="@drawable/ic_notification"
         android:title="Notificatopm"
         />
     <item
         android:id="@+id/profile_nav"
-        android:icon="@drawable/ic_update"
+        android:icon="@drawable/ic_person"
         android:title="Profile"
         />
 </menu>

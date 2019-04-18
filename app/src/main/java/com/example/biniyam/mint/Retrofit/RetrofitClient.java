@@ -34,7 +34,7 @@ public class RetrofitClient {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(client)
                     .build();
-
+///*192.168.44.125*/
         return instance;
     }
 

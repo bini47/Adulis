@@ -35,7 +35,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/home/biniyam/Public/apps/android-studio/android-studio-ide-173.4819257-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_arrow_drop_down_circle_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/home/biniyam/Public/apps/android-studio/android-studio-ide-173.4819257-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_notifications_none_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -45,7 +45,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_back" />
+                                      <entry key="outputName" value="ic_notification" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="333c46" />
                                     </map>

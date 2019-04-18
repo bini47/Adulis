@@ -17,38 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            app:elevation="0.0dip">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@id/toolbar"
-                android:layout_width="fill_parent"
-                android:layout_height="?actionBarSize"
-                android:background="@android:color/white"
-                app:contentInsetStartWithNavigation="0.0dip"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/Toolbar.Light">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="?actionBarSize"
-                    android:layout_marginRight="@dimen/spacing_large"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Checkout"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_80"
-                        app:fontFamily="sans-serif-medium" />
-                </LinearLayout>
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

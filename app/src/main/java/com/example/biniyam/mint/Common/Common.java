@@ -36,4 +36,10 @@ public class Common {
         StringBuilder result = new StringBuilder(pname.length() > 12 ? pname.substring(0,12)+ "...": pname);
         return  result.toString();
     }
+
+    public static String formatStringCart(String pname) {
+        //if character is to long, sub string
+        StringBuilder result = new StringBuilder(pname.length() > 12 ? pname.substring(0,18)+ "...": pname);
+        return  result.toString();
+    }
 }

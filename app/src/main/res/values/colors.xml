@@ -19,9 +19,13 @@
     <color name="grey_80">#ff37474f</color>
     <color name="grey_3">#fff7f7f7</color>
     <color name="grey_90">#ff263238</color>
-    <color name="light_green_500">#ff8bc34a</color>
     <color name="grey_20">#ffcccccc</color>
     <color name="light_green_400">#ff9ccc65</color>
+    <color name="light_green_600">#ff7cb342</color>
+    <color name="light_green_500">#ff8bc34a</color>
+    <color name="green_400">#ff66bb6a</color>
+
+
 
 
 

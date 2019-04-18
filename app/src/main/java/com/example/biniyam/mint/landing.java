@@ -1,6 +1,7 @@
 package com.example.biniyam.mint;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -62,20 +63,24 @@ public class landing extends AppCompatActivity {
                 case R.id.home_nav:
                     getSupportActionBar().show();
                     toolbar.setTitle("Adulis");
+
                     loadFragment(new HomeActivity());
                     return true;
                 case R.id.dashboard_nav:
                     getSupportActionBar().hide();
+
                     loadFragment(new Shop());
                     return true;
                 case R.id.order_nav:
                     getSupportActionBar().show();
-                    toolbar.setTitle("notification");
+                    toolbar.setTitle("Notification");
+
                     loadFragment(new Notification());
                     return true;
                 case R.id.profile_nav:
                     getSupportActionBar().show();
                     toolbar.setTitle("Profile");
+
                     loadFragment(new Profile());
                     return true;
             }

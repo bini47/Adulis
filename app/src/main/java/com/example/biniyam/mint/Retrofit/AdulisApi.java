@@ -1,8 +1,11 @@
 package com.example.biniyam.mint.Retrofit;
 
+import com.example.biniyam.mint.Model.Cart.CartRoot;
+import com.example.biniyam.mint.Model.Cart.MyCart;
 import com.example.biniyam.mint.Model.Product.Cart;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Model.Product.SingleProduct;
+import com.example.biniyam.mint.Model.User.Profile.Profile;
 import com.example.biniyam.mint.Model.User.User.Login;
 import com.example.biniyam.mint.Model.User.User.User;
 
@@ -39,5 +42,11 @@ public interface AdulisApi {
     @GET("/mobile-api/cart-total-qty")
    Observable<String> getTotalCartAmount();
 
+   @GET("/profile")
+   Call<Profile> getProfile(@Header("Authorization") String authToken);
+
+
+    @GET("/android-api/shopping-cart")
+    Observable<List<MyCart>>  getCart();
 
 }

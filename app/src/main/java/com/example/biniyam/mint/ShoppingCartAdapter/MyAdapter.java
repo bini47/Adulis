@@ -12,10 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Model.Cart.CartRoot;
+import com.example.biniyam.mint.Model.Cart.MyCart;
+import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class CommentsAdapter extends RecyclerView.ViewHolder{
 
@@ -38,27 +44,18 @@ class CommentsAdapter extends RecyclerView.ViewHolder{
 }
 
 public class MyAdapter extends RecyclerView.Adapter<CommentsAdapter> {
+    Context context;
+    List<MyCart> cartRoots;
 
-    private Context context;
-    private ArrayList<String> titles;
-    private ArrayList<String> price;
-    private LayoutInflater inflater;
-    private ArrayList<Integer> images;
-    private ArrayList<String> amounts;
-
-    public MyAdapter(Context context, ArrayList<String> titles, ArrayList<String> price, ArrayList<Integer> images, ArrayList<String> amounts) {
+    public MyAdapter(Context context, List<MyCart> cartRoots) {
         this.context = context;
-        this.titles = titles;
-        this.price = price;
-        this.images = images;
-        this.amounts = amounts;
-        inflater=LayoutInflater.from(context);
+        this.cartRoots = cartRoots;
     }
 
     @NonNull
     @Override
     public CommentsAdapter onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemview = inflater.inflate(R.layout.item_shopping_cart, viewGroup, false);
+        View itemview = LayoutInflater.from(context).inflate(R.layout.item_shopping_cart, viewGroup, false);
 
         return new CommentsAdapter(itemview);
     }
@@ -66,16 +63,19 @@ public class MyAdapter extends RecyclerView.Adapter<CommentsAdapter> {
     @Override
     public void onBindViewHolder(@NonNull CommentsAdapter holder, int i) {
 
+        String price= String.valueOf(cartRoots.get(i).getPrice());
+        String qty = String.valueOf(cartRoots.get(i).getQty());
+        holder.title.setText(Common.formatStringCart(cartRoots.get(i).getItem().getPname()));
 
-        holder.title.setText(titles.get(i));
-        holder.price.setText(price.get(i));
-        holder.amount.setText(amounts.get(i));
-        holder.image.setImageDrawable(BgCenter(images.get(i)));
+        holder.price.setText(new StringBuilder (price).append("Birr"));
+        holder.amount.setText(qty);
+        holder.image.setImageDrawable(BgCenter(R.drawable.img_plant_6));
+
     }
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return cartRoots.size();
     }
     public BitmapDrawable BgCenter(int rid){
         Bitmap bgBit= BitmapFactory.decodeResource(context.getResources(),rid);
