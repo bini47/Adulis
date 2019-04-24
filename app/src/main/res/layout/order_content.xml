@@ -9,6 +9,7 @@
     app:cardElevation="5dp"
     android:layout_marginBottom="0.5dp"
     android:clickable="true"
+    app:layout_behavior="@string/bottom_sheet_behavior"
     android:foreground="?android:attr/selectableItemBackground"
 
 
@@ -88,6 +89,7 @@
 
 
     </LinearLayout>
+
 
 
 

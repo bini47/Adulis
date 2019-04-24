@@ -194,4 +194,6 @@
     <dimen name="wishlist_item_img">50.0dip</dimen>
     <dimen name="fab_margin">16dip</dimen>
     <dimen name="spacing_smlarge">18.0dip</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
 </resources>

@@ -2,6 +2,7 @@ package com.example.biniyam.mint.Retrofit;
 
 import com.example.biniyam.mint.Model.Cart.CartRoot;
 import com.example.biniyam.mint.Model.Cart.MyCart;
+import com.example.biniyam.mint.Model.Notification;
 import com.example.biniyam.mint.Model.Product.Cart;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Model.Product.SingleProduct;
@@ -48,5 +49,8 @@ public interface AdulisApi {
 
     @GET("/android-api/shopping-cart")
     Observable<List<MyCart>>  getCart();
+
+    @GET("/notification")
+    Observable<List<Notification>>  getNotification(@Header("Authorization") String authToken);
 
 }

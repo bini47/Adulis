@@ -7,75 +7,78 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.biniyam.mint.NotificationAdapter.MyAdapter;
+import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Common.CurrentUser;
+import com.example.biniyam.mint.Model.Cart.MyCart;
+import com.example.biniyam.mint.NotificationAdapter.MyNotifAdapter;
+import com.example.biniyam.mint.Retrofit.AdulisApi;
+import com.example.biniyam.mint.ShoppingCartAdapter.MyAdapter;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class Notification extends Fragment {
 
-    ListView listView;
-    ArrayList<String> title= new ArrayList<>();
-    ArrayList<String> desc= new ArrayList<>();
-    ArrayList<Class>activityClasses= new ArrayList<>();
-    ArrayList<Integer>iconsId= new ArrayList<>();
-    ArrayList<String>cardBackground= new ArrayList<>();
-    ArrayList<String>siteId= new ArrayList<>();
-    RecyclerView recyclerView;
-    LinearLayoutManager linearLayoutManager;
-    MyAdapter adapter;
+    RecyclerView notificationHolder;
+    MyNotifAdapter myNotifAdapter;
     View rootView;
+    AdulisApi adulisApi;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    CurrentUser currentUser;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.notification_layout, container, false);
+        rootView = inflater.inflate(R.layout.fragment_notification, container, false);
+        notificationHolder=rootView.findViewById(R.id.notification_holder);
 
-
-        recyclerView= (RecyclerView) rootView.findViewById(R.id.notification_recycler);
-
-
-        iconsId.add(R.drawable.ic_delete);
-        iconsId.add(R.drawable.ic_update);
-        iconsId.add(R.drawable.ic_add_image);
-        iconsId.add(R.drawable.ic_clerance_sell);
-        iconsId.add(R.drawable.ic_update);
-        iconsId.add(R.drawable.ic_add_image);
-        iconsId.add(R.drawable.ic_clerance_sell);
-
-
-
-
-        cardBackground.add("#1565c0");
-        cardBackground.add("#00838F");
-        cardBackground.add("#006064");
-        cardBackground.add("#3F51B5");
-        cardBackground.add("#0277BD");
-        cardBackground.add("#607D8B");
-        cardBackground.add("#00838F");
-
-
-
-
-
-
-        desc.add("this is the discripton part for all orocash agent to provide the user additional information");
-        desc.add("You can easily withdraw cash from your oroagent account by contacting yor agent ");
-        desc.add("It is a process of buying an air time either for yourself or another phone through USSD/Mobile channel ");
-        desc.add("It's a process of paying bill by providing the Bill reference");
-        desc.add("this is the discripton part for all orocash agent to provide the user additional information");
-        desc.add("You can easily withdraw cash from your oroagent account by contacting yor agent ");
-        desc.add("It is a process of buying an air time either for yourself or another phone through USSD/Mobile channel ");
-
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter =new MyAdapter(getContext(),desc,iconsId,cardBackground);
-        recyclerView.setAdapter(adapter);
-
-
+        adulisApi = Common.getApi();
+        currentUser = new CurrentUser(getContext());
+        String token = currentUser.getToken();
+        if (token.equals("")) {
+            //TODO: SEND ERROR DATA TO LOGIN VIEW
+            //fragment.finish()
+        }
+        notificationHolder.setLayoutManager(new LinearLayoutManager(getContext()));
+        getNotif(token);
         return rootView;
+    }
+
+    private void getNotif(String token) {
+        compositeDisposable.add(adulisApi.getNotification(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        new Consumer<List<com.example.biniyam.mint.Model.Notification>>() {
+                            @Override
+                            public void accept(List<com.example.biniyam.mint.Model.Notification> notifications) throws Exception {
+
+                                display(notifications);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable t) throws Exception {
+                                Toast.makeText(getContext(),t.getMessage() , Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                ));
+
+
+
+    }
+
+    private void display(List<com.example.biniyam.mint.Model.Notification> notifications) {
+
+
+        MyNotifAdapter  myNotifAdapter = new MyNotifAdapter(getContext(),notifications);
+        notificationHolder.setAdapter(myNotifAdapter);
 
     }
 }

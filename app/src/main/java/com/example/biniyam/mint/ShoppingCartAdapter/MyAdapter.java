@@ -23,7 +23,7 @@ import com.example.biniyam.mint.R;
 import java.util.ArrayList;
 import java.util.List;
 
-class CommentsAdapter extends RecyclerView.ViewHolder{
+class   CommentsAdapter extends RecyclerView.ViewHolder{
 
 
     protected ImageView image;

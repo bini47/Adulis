@@ -3,8 +3,8 @@ package com.example.biniyam.mint.NotificationAdapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -15,28 +15,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.biniyam.mint.Interface.ItemClickListner;
+import com.example.biniyam.mint.Model.Cart.MyCart;
 import com.example.biniyam.mint.Model.Notification;
 import com.example.biniyam.mint.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by voodoo on 2/28/2018.
- */
-
-class AdapteHOlder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+class AdapterHolder extends RecyclerView.ViewHolder{
 
 
-    private ItemClickListner itemClickListner;
     protected TextView  subject,type,body;
     ImageView icon,sml_bage, sml_bg;
     CardView sml_icon;
 
-
-
-    public AdapteHOlder(View itemView) {
+    public AdapterHolder(@NonNull View itemView) {
         super(itemView);
 
         subject=(TextView) itemView.findViewById(R.id.subject);
@@ -46,95 +38,55 @@ class AdapteHOlder extends RecyclerView.ViewHolder implements View.OnClickListen
         sml_bage=(ImageView)itemView.findViewById(R.id.sml_bage);
         sml_bg=(ImageView)itemView.findViewById(R.id.sml_bg);
 
-
-
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
     }
 
-    public void setItemClickListner(ItemClickListner itemClickListner) {
-        this.itemClickListner = itemClickListner;
-    }
-    @Override
-    public void onClick(View view) {
-        itemClickListner.onClick(view, getAdapterPosition(), false);
 
-
-    }
-
-    @Override
-    public boolean onLongClick(View view) {
-
-        itemClickListner.onClick(view, getAdapterPosition(), true);
-        return true;
-
-    }
 }
 
-public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
-
-    private Context context;
-    private ArrayList<String> descriptions;
-    private ArrayList<Integer> images;
-    private LayoutInflater inflater;
+public class MyNotifAdapter extends RecyclerView.Adapter<AdapterHolder> {
+    Context context;
     List<Notification> notif;
-    ArrayList<String> cardBackground;
-
-
-
-    public MyAdapter(Context context, List<Notification> notif) {
+    private LayoutInflater inflater;
+    public MyNotifAdapter(Context context, List<Notification> notif) {
         this.context = context;
-
-        this.notif=notif;
+        this.notif = notif;
         inflater=LayoutInflater.from(context);
 
     }
 
-
+    @NonNull
     @Override
-    public AdapteHOlder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemview = inflater.inflate(R.layout.order_content, parent, false);
+    public AdapterHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        return new AdapteHOlder(itemview);
+        View itemview = inflater.inflate(R.layout.notification_item, viewGroup, false);
+
+
+        return new AdapterHolder(itemview);
     }
 
     @Override
-    public void onBindViewHolder(AdapteHOlder holder, int i) {
+    public void onBindViewHolder(@NonNull AdapterHolder holder, int i) {
 
         Toast.makeText(context, notif.get(i).getType(), Toast.LENGTH_SHORT).show();
         holder.subject.setText(notif.get(i).getSubject());
         holder.type.setText(notif.get(i).getType());
         holder.body.setText("heeey");
 
-
-        holder.setItemClickListner(new ItemClickListner() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-                if (!isLongClick) {
-
-
-
-                }
-
-
-            }
-        });
-
-
-
     }
+
     @Override
     public int getItemCount() {
+        Toast.makeText(context, String.valueOf(notif.size()), Toast.LENGTH_SHORT).show();
         return notif.size();
     }
-
     public BitmapDrawable BgCenter(int rid){
         Bitmap bgBit= BitmapFactory.decodeResource(context.getResources(),rid);
         BitmapDrawable bgDrawable=new BitmapDrawable(context.getResources(),bgBit);
         bgDrawable.setGravity(Gravity.CENTER);
 
-        //bgDrawable.setColorFilter(new PorterDuffColorFilter(Color., PorterDuff.Mode.SRC_ATOP));
+
         return  bgDrawable;
 
     }
+
 }

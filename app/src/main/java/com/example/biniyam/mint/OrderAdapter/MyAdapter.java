@@ -1,4 +1,4 @@
-package com.example.biniyam.mint.NotificationAdapter;
+package com.example.biniyam.mint.OrderAdapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,14 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.biniyam.mint.Interface.ItemClickListner;
-import com.example.biniyam.mint.Model.Notification;
 import com.example.biniyam.mint.R;
 
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by voodoo on 2/28/2018.
@@ -30,21 +28,18 @@ class AdapteHOlder extends RecyclerView.ViewHolder implements View.OnClickListen
 
 
     private ItemClickListner itemClickListner;
-    protected TextView  subject,type,body;
-    ImageView icon,sml_bage, sml_bg;
-    CardView sml_icon;
+    TextView  desc;
+    ImageView icon;
+    CardView card;
 
 
 
     public AdapteHOlder(View itemView) {
         super(itemView);
 
-        subject=(TextView) itemView.findViewById(R.id.subject);
-        type=(TextView) itemView.findViewById(R.id.type);
-        body=(TextView) itemView.findViewById(R.id.body);
+        desc=(TextView) itemView.findViewById(R.id.desc);
         icon=(ImageView)itemView.findViewById(R.id.icon);
-        sml_bage=(ImageView)itemView.findViewById(R.id.sml_bage);
-        sml_bg=(ImageView)itemView.findViewById(R.id.sml_bg);
+        card=(CardView) itemView.findViewById(R.id.background_card);
 
 
 
@@ -77,17 +72,19 @@ public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
     private ArrayList<String> descriptions;
     private ArrayList<Integer> images;
     private LayoutInflater inflater;
-    List<Notification> notif;
+
     ArrayList<String> cardBackground;
 
 
 
-    public MyAdapter(Context context, List<Notification> notif) {
+    public MyAdapter(Context context,  ArrayList<String> descriptions,
+                     ArrayList<Integer> images,  ArrayList<String> cardBackground) {
         this.context = context;
 
-        this.notif=notif;
+        this.descriptions = descriptions;
+        this.images = images;
         inflater=LayoutInflater.from(context);
-
+        this.cardBackground=cardBackground;
     }
 
 
@@ -99,12 +96,12 @@ public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
     }
 
     @Override
-    public void onBindViewHolder(AdapteHOlder holder, int i) {
+    public void onBindViewHolder(AdapteHOlder holder, int position) {
 
-        Toast.makeText(context, notif.get(i).getType(), Toast.LENGTH_SHORT).show();
-        holder.subject.setText(notif.get(i).getSubject());
-        holder.type.setText(notif.get(i).getType());
-        holder.body.setText("heeey");
+
+        holder.desc.setText(descriptions.get(position));
+        holder.icon.setImageDrawable(BgCenter(images.get(position)));
+        holder.card.setCardBackgroundColor(Color.parseColor(cardBackground.get(position)));
 
 
         holder.setItemClickListner(new ItemClickListner() {
@@ -125,7 +122,7 @@ public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
     }
     @Override
     public int getItemCount() {
-        return notif.size();
+        return descriptions.size();
     }
 
     public BitmapDrawable BgCenter(int rid){

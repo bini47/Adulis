@@ -1,31 +1,21 @@
 package com.example.biniyam.mint;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.biniyam.mint.Common.Common;
-import com.example.biniyam.mint.Model.Product.CartAmount;
-import com.example.biniyam.mint.Model.Product.SingleProduct;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
 
 import io.reactivex.disposables.CompositeDisposable;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class landing extends AppCompatActivity {
 
@@ -71,18 +61,24 @@ public class landing extends AppCompatActivity {
 
                     loadFragment(new Shop());
                     return true;
-                case R.id.order_nav:
+                case R.id.notification:
                     getSupportActionBar().show();
-                    toolbar.setTitle("Notification");
-
+                    toolbar.setTitle("Order");
                     loadFragment(new Notification());
+
                     return true;
                 case R.id.profile_nav:
                     getSupportActionBar().show();
                     toolbar.setTitle("Profile");
-
                     loadFragment(new Profile());
                     return true;
+
+                case R.id.order_nav:
+                    getSupportActionBar().show();
+                    toolbar.setTitle("My Orders");
+                    loadFragment(new Order());
+                    return true;
+
             }
 
             return false;

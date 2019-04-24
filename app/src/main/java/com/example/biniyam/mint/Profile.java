@@ -3,21 +3,16 @@ package com.example.biniyam.mint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Common.CurrentUser;
-import com.example.biniyam.mint.Model.User.User.User;
-import com.example.biniyam.mint.NotificationAdapter.MyAdapter;
+import com.example.biniyam.mint.OrderAdapter.MyAdapter;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
-
-import java.util.ArrayList;
 
 import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.Call;
