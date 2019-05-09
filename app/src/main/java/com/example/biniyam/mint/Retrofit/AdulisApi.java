@@ -4,6 +4,7 @@ import com.example.biniyam.mint.Model.Cart.CartRoot;
 import com.example.biniyam.mint.Model.Cart.MyCart;
 import com.example.biniyam.mint.Model.Notification;
 import com.example.biniyam.mint.Model.Product.Cart;
+import com.example.biniyam.mint.Model.Product.Checkout;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Model.Product.SingleProduct;
 import com.example.biniyam.mint.Model.User.Profile.Profile;
@@ -34,7 +35,7 @@ public interface AdulisApi {
     Observable<List<Product>> getProducts();
 
 
-    @GET("/product/{id}")
+    @GET("/mobile-api/product/{id}")
     Call<SingleProduct> getSingleProduct(@Path("id")String pid);
 
     @GET("/mobile-api/add-to-cart/{id}")
@@ -54,6 +55,6 @@ public interface AdulisApi {
     Observable<List<Notification>>  getNotification(@Header("Authorization") String authToken);
 
     @POST("/order")
-    Call<String> Order(@Body User user);
+    Call<Checkout> order(@Header("Authorization") String authTooken, @Body Checkout checkout);
 
 }

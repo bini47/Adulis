@@ -9,12 +9,12 @@ public class Rating
     public int three ;
     public int two ;
     public int one ;
-    public int averge ;
+    public double averge ;
 
     public Rating() {
     }
 
-    public Rating(int five, int four, int three, int two, int one, int averge) {
+    public Rating(int five, int four, int three, int two, int one, double averge) {
         this.five = five;
         this.four = four;
         this.three = three;
@@ -63,7 +63,7 @@ public class Rating
         this.one = one;
     }
 
-    public int getAverge() {
+    public double getAverge() {
         return averge;
     }
 

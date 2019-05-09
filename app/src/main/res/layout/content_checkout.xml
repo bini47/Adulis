@@ -155,7 +155,7 @@
                         android:layout_height="@dimen/spacing_xlarge"
                         android:background="@drawable/edit_text_round_bg_outline"
                         android:hint="Firstname"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
                         android:minHeight="@dimen/spacing_xmlarge" />
 
                     <EditText
@@ -164,6 +164,7 @@
                         android:layout_width="fill_parent"
                         android:inputType="textPersonName"
                         android:layout_height="@dimen/spacing_xlarge"
+                        android:layout_marginTop="@dimen/spacing_middle"
                         android:background="@drawable/edit_text_round_bg_outline"
                         android:hint="Lastname"
                         android:minHeight="@dimen/spacing_xmlarge" />
@@ -171,6 +172,7 @@
                         style="@style/EditText.Flat.Grey.Small"
                         android:id="@+id/companyname"
                         android:layout_width="fill_parent"
+                        android:layout_marginTop="@dimen/spacing_middle"
                         android:inputType="textPersonName"
                         android:layout_height="@dimen/spacing_xlarge"
                         android:background="@drawable/edit_text_round_bg_outline"
@@ -250,7 +252,14 @@
                         android:background="@drawable/edit_text_round_bg_outline"
                         android:inputType="date" />
 
-
+                    <EditText
+                        android:hint="Additional note"
+                        android:id="@+id/note"
+                        android:layout_width="fill_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="@dimen/spacing_middle"
+                        android:background="@drawable/edit_text_round_bg_outline"
+                        android:inputType="text" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -443,7 +452,7 @@
         </LinearLayout>
 
         <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/lyt_next"
+            android:id="@+id/submit"
             style="@style/RippleStyleWhite"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/spacing_xxlarge"
@@ -468,7 +477,7 @@
                     android:layout_height="18dip"
                     android:layout_marginLeft="@dimen/spacing_medium"
                     android:tint="@android:color/white"
-                    app:srcCompat="@drawable/ic_done" />
+                    android:src="@drawable/ic_done" />
             </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>

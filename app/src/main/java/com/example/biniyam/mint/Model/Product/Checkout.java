@@ -13,8 +13,9 @@ public class Checkout {
     String paymentmethod;
     String note;
     String transactionmethod;
+    String deliverydate;
 
-    public Checkout(String firstname, String lastname, String companyname, String city, String streetname, String housenumber, String phone, String email, String paymentmethod, String note, String transactionmethod) {
+    public Checkout(String firstname, String lastname, String companyname, String city, String streetname, String housenumber, String phone, String email, String paymentmethod, String note, String transactionmethod, String deliverydate) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.companyname = companyname;
@@ -26,6 +27,7 @@ public class Checkout {
         this.paymentmethod = paymentmethod;
         this.note = note;
         this.transactionmethod = transactionmethod;
+        this.deliverydate = deliverydate;
     }
 
     public String getFirstname() {
@@ -114,5 +116,13 @@ public class Checkout {
 
     public void setTransactionmethod(String transactionmethod) {
         this.transactionmethod = transactionmethod;
+    }
+
+    public String getDeliverydate() {
+        return deliverydate;
+    }
+
+    public void setDeliverydate(String deliverydate) {
+        this.deliverydate = deliverydate;
     }
 }
