@@ -1,5 +1,6 @@
 package com.example.biniyam.mint;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,9 +32,10 @@ import retrofit2.Response;
 
 public class SingleProduct extends AppCompatActivity {
 
-    TextView title,price,releseDate,stoke,description,catagory,tags;
+    TextView title,price,releseDate,stoke,description,catagory,tags,review;
     AdulisApi adulisApi;
     SliderLayout slider;
+    Common common = new Common();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     LinearLayout addToCart;//TODO: CHANGE THIS TO MATERIAL LAYOUT
 
@@ -63,6 +65,7 @@ public class SingleProduct extends AppCompatActivity {
         description= (TextView)findViewById(R.id.description);
         catagory= (TextView)findViewById(R.id.category);
         addToCart= (LinearLayout)findViewById(R.id.lyt_add_cart);
+        review= (TextView) findViewById(R.id.review);
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,13 @@ public class SingleProduct extends AppCompatActivity {
         slider.addSlider(textSliderView2);
         slider.addSlider(textSliderView3);
 
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getBaseContext(), Comments.class);
+                startActivity(i);
+            }
+        });
         //TODO: ADD THIS TO SWIPE REFRESH LAYOUT
         fetchProduct(Common.currentProductId);
     }
@@ -95,7 +105,7 @@ public class SingleProduct extends AppCompatActivity {
                         new Consumer<Cart>() {
                             @Override
                             public void accept(Cart cart) throws Exception {
-                                Toast.makeText(SingleProduct.this, String.valueOf(cart.getTotalPrice()), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SingleProduct.this, "Product added to your cart", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -115,6 +125,7 @@ public class SingleProduct extends AppCompatActivity {
             @Override
             public void onResponse(Call<com.example.biniyam.mint.Model.Product.SingleProduct> call, Response<com.example.biniyam.mint.Model.Product.SingleProduct> response) {
                 response.body();
+                Common.currentProduct=response.body();
                 title.setText(response.body().product.getPname());
                 price.setText(response.body().product.getPrice());
                 description.setText(response.body().product.getDescription());

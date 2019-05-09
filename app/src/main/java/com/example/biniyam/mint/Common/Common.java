@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.example.biniyam.mint.Model.Product.Product;
+import com.example.biniyam.mint.Model.Product.SingleProduct;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
 import com.example.biniyam.mint.Retrofit.RetrofitClient;
 
@@ -12,6 +14,7 @@ import retrofit2.Retrofit;
 public class Common {
 
     public static String currentProductId = null;
+    public static SingleProduct currentProduct = null;
     public static String currentUsertoken=null;
     public static AdulisApi getApi(){
         return  RetrofitClient.getInstance().create(AdulisApi.class);

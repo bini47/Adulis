@@ -6,7 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Comments">
 
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:hint="Add comment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="comment"
+            />
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/comment_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,4 +30,6 @@
 
     </android.support.v7.widget.RecyclerView>
 
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

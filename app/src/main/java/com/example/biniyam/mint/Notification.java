@@ -69,13 +69,9 @@ public class Notification extends Fragment {
                         }
 
                 ));
-
-
-
     }
 
     private void display(List<com.example.biniyam.mint.Model.Notification> notifications) {
-
 
         MyNotifAdapter  myNotifAdapter = new MyNotifAdapter(getContext(),notifications);
         notificationHolder.setAdapter(myNotifAdapter);

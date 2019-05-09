@@ -8,5 +8,7 @@
         android:id="@+id/cart"
         android:orderInCategory="100"
         android:icon="@drawable/ic_cart"
-        android:title="Shopping cart" />
+        android:title="Shopping cart"
+        android:actionLayout="@layout/action_bar_cart_notification"
+        />
 </menu>

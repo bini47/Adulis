@@ -53,4 +53,7 @@ public interface AdulisApi {
     @GET("/notification")
     Observable<List<Notification>>  getNotification(@Header("Authorization") String authToken);
 
+    @POST("/order")
+    Call<String> Order(@Body User user);
+
 }
