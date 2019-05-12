@@ -15,10 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.biniyam.mint.Interface.ItemClickListner;
+import com.example.biniyam.mint.Model.Order.Order;
 import com.example.biniyam.mint.R;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by voodoo on 2/28/2018.
@@ -69,28 +71,18 @@ class AdapteHOlder extends RecyclerView.ViewHolder implements View.OnClickListen
 public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
 
     private Context context;
-    private ArrayList<String> descriptions;
-    private ArrayList<Integer> images;
-    private LayoutInflater inflater;
+    List<Order> order;
 
-    ArrayList<String> cardBackground;
-
-
-
-    public MyAdapter(Context context,  ArrayList<String> descriptions,
-                     ArrayList<Integer> images,  ArrayList<String> cardBackground) {
+    public MyAdapter(Context context, List<Order> order) {
         this.context = context;
-
-        this.descriptions = descriptions;
-        this.images = images;
-        inflater=LayoutInflater.from(context);
-        this.cardBackground=cardBackground;
+        this.order = order;
     }
-
 
     @Override
     public AdapteHOlder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemview = inflater.inflate(R.layout.order_content, parent, false);
+        View itemview = LayoutInflater.from(context).inflate(R.layout.order_content, parent, false);
+
+
 
         return new AdapteHOlder(itemview);
     }
@@ -99,9 +91,9 @@ public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
     public void onBindViewHolder(AdapteHOlder holder, int position) {
 
 
-        holder.desc.setText(descriptions.get(position));
-        holder.icon.setImageDrawable(BgCenter(images.get(position)));
-        holder.card.setCardBackgroundColor(Color.parseColor(cardBackground.get(position)));
+        holder.desc.setText(order.get(position).getUser());
+        holder.icon.setImageDrawable(BgCenter(R.drawable.ic_event_grey));
+        holder.card.setCardBackgroundColor(Color.parseColor("#989898"));
 
 
         holder.setItemClickListner(new ItemClickListner() {
@@ -122,7 +114,7 @@ public class MyAdapter extends RecyclerView.Adapter<AdapteHOlder> {
     }
     @Override
     public int getItemCount() {
-        return descriptions.size();
+        return order.size();
     }
 
     public BitmapDrawable BgCenter(int rid){

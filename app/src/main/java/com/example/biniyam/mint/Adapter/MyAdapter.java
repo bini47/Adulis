@@ -17,9 +17,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.biniyam.mint.Comments;
+import com.example.biniyam.mint.Model.Cart.MyCart;
+import com.example.biniyam.mint.Model.Product.Comment;
 import com.example.biniyam.mint.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class CommentsAdapter extends RecyclerView.ViewHolder{
 
@@ -40,25 +44,19 @@ class CommentsAdapter extends RecyclerView.ViewHolder{
 
 }
 public class MyAdapter extends RecyclerView.Adapter<CommentsAdapter> {
+    Context context;
+    List<Comment> comment;
 
-    private Context context;
-    private ArrayList<String> usernames;
-    private ArrayList<String> contents;
-    private LayoutInflater inflater;
-    private ArrayList<Integer> profilePics;
-
-    public MyAdapter(Context context, ArrayList<String> usernames, ArrayList<String> contents,ArrayList<Integer> profilePics) {
+    public MyAdapter(Context context, List<Comment> comment) {
         this.context = context;
-        this.usernames = usernames;
-        this.contents = contents;
-        inflater=LayoutInflater.from(context);
-        this.profilePics = profilePics;
+        this.comment = comment;
     }
 
     @NonNull
     @Override
     public CommentsAdapter onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemview = inflater.inflate(R.layout.comment_single, viewGroup, false);
+        View itemview = LayoutInflater.from(context).inflate(R.layout.comment_single, viewGroup, false);
+
 
         return new CommentsAdapter(itemview);
     }
@@ -67,14 +65,14 @@ public class MyAdapter extends RecyclerView.Adapter<CommentsAdapter> {
     public void onBindViewHolder(@NonNull CommentsAdapter holder, int i) {
 
 
-        holder.username.setText(usernames.get(i));
-        holder.content.setText(contents.get(i));
-        holder.profilePic.setImageDrawable(BgCenter(profilePics.get(i)));
+        holder.username.setText(comment.get(i).getAuthor());
+        holder.content.setText(comment.get(i).getText());
+        holder.profilePic.setImageDrawable(BgCenter(R.drawable.user_3));
     }
 
     @Override
     public int getItemCount() {
-        return usernames.size();
+        return comment.size();
     }
     public BitmapDrawable BgCenter(int rid){
         Bitmap bgBit= BitmapFactory.decodeResource(context.getResources(),rid);

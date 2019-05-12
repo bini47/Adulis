@@ -34,8 +34,9 @@ public class CurrentUser {
                 if(response.isSuccessful()) {
                     //DECODING THE USER PROFILE
                     try{
-                        Toast.makeText(context, response.body().getFirstname()+ " "
-                                +response.body().getLastname() , Toast.LENGTH_SHORT).show();
+                        Common.CurrentUser=response.body().getFirstname()+ " "
+                                +response.body().getLastname();
+
                     }catch(Exception e){
                         e.printStackTrace();
                     }

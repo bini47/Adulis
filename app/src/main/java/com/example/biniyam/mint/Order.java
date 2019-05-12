@@ -8,10 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.biniyam.mint.Common.Common;
+import com.example.biniyam.mint.Common.CurrentUser;
+import com.example.biniyam.mint.Model.Notification;
 import com.example.biniyam.mint.OrderAdapter.MyAdapter;
+import com.example.biniyam.mint.Retrofit.AdulisApi;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Order extends Fragment {
 
@@ -23,59 +37,68 @@ public class Order extends Fragment {
     ArrayList<String>cardBackground= new ArrayList<>();
     ArrayList<String>siteId= new ArrayList<>();
     RecyclerView recyclerView;
+    CurrentUser currentUser;
     LinearLayoutManager linearLayoutManager;
     MyAdapter adapter;
+    AdulisApi adulisApi;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
     View rootView;
+    @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.order_layout, container, false);
 
-
+        adulisApi = Common.getApi();
         recyclerView= (RecyclerView) rootView.findViewById(R.id.notification_recycler);
 
-
-        iconsId.add(R.drawable.ic_delete);
-        iconsId.add(R.drawable.ic_update);
-        iconsId.add(R.drawable.ic_add_image);
-        iconsId.add(R.drawable.ic_clerance_sell);
-        iconsId.add(R.drawable.ic_update);
-        iconsId.add(R.drawable.ic_add_image);
-        iconsId.add(R.drawable.ic_clerance_sell);
-
-
-
-
-        cardBackground.add("#1565c0");
-        cardBackground.add("#00838F");
-        cardBackground.add("#006064");
-        cardBackground.add("#3F51B5");
-        cardBackground.add("#0277BD");
-        cardBackground.add("#607D8B");
-        cardBackground.add("#00838F");
-
-
-
-
-
-
-        desc.add("this is the discripton part for all orocash agent to provide the user additional information");
-        desc.add("You can easily withdraw cash from your oroagent account by contacting yor agent ");
-        desc.add("It is a process of buying an air time either for yourself or another phone through USSD/Mobile channel ");
-        desc.add("It's a process of paying bill by providing the Bill reference");
-        desc.add("this is the discripton part for all orocash agent to provide the user additional information");
-        desc.add("You can easily withdraw cash from your oroagent account by contacting yor agent ");
-        desc.add("It is a process of buying an air time either for yourself or another phone through USSD/Mobile channel ");
-
-
-
+        currentUser = new CurrentUser(getContext());
+        String token = currentUser.getToken();
+        if (token.equals("")) {
+            //TODO: SEND ERROR DATA TO LOGIN VIEW
+            //fragment.finish()
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter =new MyAdapter(getContext(),desc,iconsId,cardBackground);
-        recyclerView.setAdapter(adapter);
+        getOrders(token);
+
+
+
 
 
         return rootView;
 
+    }
+
+    private void getOrders(String token) {
+        compositeDisposable.add(adulisApi.myOrders(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        new Consumer<List<com.example.biniyam.mint.Model.Order.Order>>() {
+                            @Override
+                            public void accept(List<com.example.biniyam.mint.Model.Order.Order> orders) throws Exception {
+
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable t) throws Exception {
+                                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        )
+        );
+
+    }
+
+
+    private void displayMyOrders(List<com.example.biniyam.mint.Model.Order.Order> orders) {
+        adapter =new MyAdapter(getContext(),orders);
+        recyclerView.setAdapter(adapter);
     }
 }

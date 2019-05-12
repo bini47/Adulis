@@ -30,7 +30,11 @@ public class signup extends AppCompatActivity {
     Button signupButton;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-
+    @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

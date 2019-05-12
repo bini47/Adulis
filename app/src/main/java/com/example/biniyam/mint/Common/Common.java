@@ -16,6 +16,7 @@ public class Common {
     public static String currentProductId = null;
     public static SingleProduct currentProduct = null;
     public static String currentUsertoken=null;
+    public static String CurrentUser=null;
     public static AdulisApi getApi(){
         return  RetrofitClient.getInstance().create(AdulisApi.class);
     }

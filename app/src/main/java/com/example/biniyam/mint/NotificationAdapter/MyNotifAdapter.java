@@ -67,7 +67,7 @@ public class MyNotifAdapter extends RecyclerView.Adapter<AdapterHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdapterHolder holder, int i) {
 
-        Toast.makeText(context, notif.get(i).getType(), Toast.LENGTH_SHORT).show();
+
         holder.subject.setText(notif.get(i).getSubject());
         holder.type.setText(notif.get(i).getType());
         holder.body.setText("heeey");
@@ -76,7 +76,7 @@ public class MyNotifAdapter extends RecyclerView.Adapter<AdapterHolder> {
 
     @Override
     public int getItemCount() {
-        Toast.makeText(context, String.valueOf(notif.size()), Toast.LENGTH_SHORT).show();
+
         return notif.size();
     }
     public BitmapDrawable BgCenter(int rid){

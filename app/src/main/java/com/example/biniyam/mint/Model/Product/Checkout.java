@@ -15,6 +15,7 @@ public class Checkout {
     String transactionmethod;
     String deliverydate;
 
+
     public Checkout(String firstname, String lastname, String companyname, String city, String streetname, String housenumber, String phone, String email, String paymentmethod, String note, String transactionmethod, String deliverydate) {
         this.firstname = firstname;
         this.lastname = lastname;

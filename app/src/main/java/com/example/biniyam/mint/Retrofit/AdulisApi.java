@@ -3,8 +3,10 @@ package com.example.biniyam.mint.Retrofit;
 import com.example.biniyam.mint.Model.Cart.CartRoot;
 import com.example.biniyam.mint.Model.Cart.MyCart;
 import com.example.biniyam.mint.Model.Notification;
+import com.example.biniyam.mint.Model.Order.Order;
 import com.example.biniyam.mint.Model.Product.Cart;
 import com.example.biniyam.mint.Model.Product.Checkout;
+import com.example.biniyam.mint.Model.Product.Comment;
 import com.example.biniyam.mint.Model.Product.Product;
 import com.example.biniyam.mint.Model.Product.SingleProduct;
 import com.example.biniyam.mint.Model.User.Profile.Profile;
@@ -57,4 +59,9 @@ public interface AdulisApi {
     @POST("/order")
     Call<Checkout> order(@Header("Authorization") String authTooken, @Body Checkout checkout);
 
+    @POST("/product/{id}/comments")
+    Call<Comment> comemnt(@Path("id")String pid, @Body Comment comment);
+
+    @GET("/order/view")
+    Observable<List<Order>> myOrders(@Header("Authorization") String authTooken);
 }

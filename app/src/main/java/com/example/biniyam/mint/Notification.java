@@ -32,6 +32,11 @@ public class Notification extends Fragment {
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CurrentUser currentUser;
     @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 

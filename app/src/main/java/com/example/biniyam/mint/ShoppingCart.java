@@ -47,6 +47,11 @@ public class ShoppingCart extends AppCompatActivity {
     MyAdapter adapter;
 
     @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
@@ -71,31 +76,6 @@ public class ShoppingCart extends AppCompatActivity {
 
 
         loadCart();
-
-        title.add("Nike shooes");
-        title.add("Majical Clock");
-        title.add("High hills");
-        title.add("Pan");
-        title.add("Habeshan dress");
-
-        amount.add("3 item(s)");
-        amount.add("53 item(s)");
-        amount.add("7 item(s)");
-        amount.add("2 item(s)");
-        amount.add("1 item(s)");
-
-
-        imageId.add(R.drawable.img_plant_6);
-        imageId.add(R.drawable.img_plant_6);
-        imageId.add(R.drawable.img_plant_6);
-        imageId.add(R.drawable.img_plant_6);
-        imageId.add(R.drawable.img_plant_6);
-
-        price.add("200");
-        price.add("1000");
-        price.add("2000");
-        price.add("60");
-        price.add("5000");
 
 
 

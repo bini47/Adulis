@@ -1,17 +1,19 @@
 package com.example.biniyam.mint.Model.Product;
 
+import java.util.List;
+
 public class SingleProduct {
 
 
         public Product product;
-        public int comment_count;
+        public List<Comment> comments;
 
         public SingleProduct() {
         }
 
-        public SingleProduct(Product product, int comment_count) {
+        public SingleProduct(Product product, List<Comment> comments) {
                 this.product = product;
-                this.comment_count = comment_count;
+                this.comments = comments;
         }
 
         public Product getProduct() {
@@ -22,11 +24,11 @@ public class SingleProduct {
                 this.product = product;
         }
 
-        public int getComment_count() {
-                return comment_count;
+        public List<Comment> getComments() {
+                return comments;
         }
 
-        public void setComment_count(int comment_count) {
-                this.comment_count = comment_count;
+        public void setComments(List<Comment> comments) {
+                this.comments = comments;
         }
 }
