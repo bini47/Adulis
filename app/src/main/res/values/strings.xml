@@ -10,20 +10,17 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_shop">Shop</string>
-    <string name="tab_text_1">All</string>
-    <string name="tab_text_2">Clothing</string>
-    <string name="tab_text_3">Shoes</string>
-    <string name="tab_text_4">Fasion</string>
-    <string name="tab_text_5">Beauty</string>
-    <string name="tab_text_6">Personal care</string>
-    <string name="tab_text_7">Electronics</string>
-    <string name="tab_text_8">Household</string>
-    <string name="tab_text_9">Kitchen</string>
-    <string name="tab_text_10">Industrial</string>
-    <string name="tab_text_11">Tools</string>
-    <string name="tab_text_12">Automtive</string>
-    <string name="tab_text_13">Other</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_text_0">All</string>
+    <string name="tab_text_1">Clothing</string>
+    <string name="tab_text_2">Shoes</string>
+    <string name="tab_text_3">Electronics</string>
+    <string name="tab_text_4">House Hold</string>
+    <string name="tab_text_5">Bedroom Solutions</string>
+    <string name="tab_text_6">Industrial</string>
+    <string name="tab_text_7">Vehicles</string>
+
+
+
     <string name="title_activity_shopping_cart">ShoppingCart</string>
     <string name="title_activity_orders">Orders</string>
 
@@ -34,10 +31,7 @@
     <string name="title_activity_single_product">SingleProduct</string>
     <string name="bt_add_cart">Add to cart</string>
     <string name="categories_product">Catagories</string>
-    <string name="dummy">some leorem ipsumdonor ement some leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor
-        /n ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem
-        ipsumdonor ement some leorem ipsumdonor ement some leoremipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ementsome leorem ipsumdonor ement some leorem ipsumdonor ementsome
-        leorem ipsumdonor ementsome leorem ipsumdonor ement</string>
+    <string name="dummy"></string>
 
 
     <!--login strings-->
@@ -60,4 +54,5 @@
     <string name="password2">Confirm password</string>
     <string name="didnothavanaccount">Don\'t have an account? Sign up.</string>
     <string name="title_activity_checkout">Checkout</string>
+    <string name="all">All</string>
 </resources>

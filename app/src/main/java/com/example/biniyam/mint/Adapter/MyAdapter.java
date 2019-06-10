@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.biniyam.mint.Comments;
+
 import com.example.biniyam.mint.Model.Cart.MyCart;
 import com.example.biniyam.mint.Model.Product.Comment;
 import com.example.biniyam.mint.R;

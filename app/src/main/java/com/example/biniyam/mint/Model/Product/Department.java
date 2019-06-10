@@ -6,14 +6,14 @@ public class Department
 {
     public String department ;
     public Boolean _new ;
-    public List<Object> colors ;
-    public String size ;
+    public List<String> colors ;
+    public List<String> size ;
     public String modelno ;
 
     public Department() {
     }
 
-    public Department(String department, Boolean _new, List<Object> colors, String size, String modelno) {
+    public Department(String department, Boolean _new, List<String> colors, List<String> size, String modelno) {
         this.department = department;
         this._new = _new;
         this.colors = colors;
@@ -37,19 +37,19 @@ public class Department
         this._new = _new;
     }
 
-    public List<Object> getColors() {
+    public List<String> getColors() {
         return colors;
     }
 
-    public void setColors(List<Object> colors) {
+    public void setColors(List<String> colors) {
         this.colors = colors;
     }
 
-    public String getSize() {
+    public List<String> getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(List<String> size) {
         this.size = size;
     }
 

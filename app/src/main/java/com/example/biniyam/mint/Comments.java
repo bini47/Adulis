@@ -1,3 +1,4 @@
+/*
 package com.example.biniyam.mint;
 
 import android.support.v7.app.AppCompatActivity;
@@ -131,3 +132,4 @@ public class Comments extends AppCompatActivity {
 
     }
 
+*/

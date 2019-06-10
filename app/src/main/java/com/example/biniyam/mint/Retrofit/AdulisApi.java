@@ -33,12 +33,12 @@ public interface AdulisApi {
     @GET("/user/current")
     Call<User> getCurrent(@Header("Authorization") String authToken);
 
-    @GET("/mobile-api/products")
+    @GET("/products")
     Observable<List<Product>> getProducts();
 
 
     @GET("/mobile-api/product/{id}")
-    Call<SingleProduct> getSingleProduct(@Path("id")String pid);
+    Call<Product> getSingleProduct(@Path("id")String pid);
 
     @GET("/mobile-api/add-to-cart/{id}")
     Observable<Cart> addToCart(@Path("id")String pid);

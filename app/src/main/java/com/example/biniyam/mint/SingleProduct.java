@@ -12,9 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Model.Product.Cart;
 import com.example.biniyam.mint.Model.Product.Product;
@@ -34,7 +31,7 @@ public class SingleProduct extends AppCompatActivity {
 
     TextView title,price,releseDate,stoke,description,catagory,tags,review;
     AdulisApi adulisApi;
-    SliderLayout slider;
+
     Common common = new Common();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     LinearLayout addToCart;//TODO: CHANGE THIS TO MATERIAL LAYOUT
@@ -57,7 +54,7 @@ public class SingleProduct extends AppCompatActivity {
         adulisApi = Common.getApi();
 
         //init views
-        slider = (SliderLayout) findViewById(R.id.slider);
+
         title= (TextView)findViewById(R.id.title);
         price= (TextView)findViewById(R.id.price);
         releseDate= (TextView)findViewById(R.id.date);
@@ -74,22 +71,15 @@ public class SingleProduct extends AppCompatActivity {
             }
         });
 
-        TextSliderView textSliderView1 = new TextSliderView(this);
-        TextSliderView textSliderView2 = new TextSliderView(this);
-        TextSliderView textSliderView3 = new TextSliderView(this);
 
-        textSliderView1.description("im commin").image(R.drawable.banner1).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView2.description("no credit cards").image(R.drawable.banner).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView3.description("jef bezos nightmare").image(R.drawable.banner3).setScaleType(BaseSliderView.ScaleType.Fit);
-        slider.addSlider(textSliderView1);
-        slider.addSlider(textSliderView2);
-        slider.addSlider(textSliderView3);
+
+
 
         review.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {/*
                 Intent i= new Intent(getBaseContext(), Comments.class);
-                startActivity(i);
+                startActivity(i);*/
             }
         });
         //TODO: ADD THIS TO SWIPE REFRESH LAYOUT
@@ -120,29 +110,28 @@ public class SingleProduct extends AppCompatActivity {
 
     private void fetchProduct(String id) {
 
-        Call<com.example.biniyam.mint.Model.Product.SingleProduct> call= adulisApi.getSingleProduct(id);
-        call.enqueue(new Callback<com.example.biniyam.mint.Model.Product.SingleProduct>() {
+        Call<Product> call = adulisApi.getSingleProduct(id);
+        call.enqueue(new Callback<Product>() {
             @Override
-            public void onResponse(Call<com.example.biniyam.mint.Model.Product.SingleProduct> call, Response<com.example.biniyam.mint.Model.Product.SingleProduct> response) {
-                response.body();
-                Common.currentProduct=response.body();
-                title.setText(response.body().product.getPname());
-                price.setText(response.body().product.getPrice());
-                description.setText(response.body().product.getDescription());
-                catagory.setText(response.body().product.getDepartment().department);
-                 //STOKE LOGIC
-                int stokeamount= response.body().product.getStokeamount();
-                if(stokeamount <10){
-                    stoke.setText("only "+String.valueOf(stokeamount)+" left");
+            public void onResponse(Call<Product> call, Response<Product> response) {
+
+
+                Common.currentProduct = response.body();
+                title.setText(response.body().getPname());
+                price.setText(response.body().getPrice());
+                description.setText(response.body().getDescription());
+
+                //STOKE LOGIC
+                int stokeamount = response.body().getStokeamount();
+                if (stokeamount < 10) {
+                    stoke.setText("only " + String.valueOf(stokeamount) + " left");
                     //TODO: MAKE THE TEXT orange
 
-                }
-                else if(stokeamount >=10)
+                } else if (stokeamount >= 10)
                     stoke.setText("IN STOKE");
 
-                else
-                    {
-                  //TODO: MAKE THE TEXT RED
+                else {
+                    //TODO: MAKE THE TEXT RED
                     stoke.setText("Out of stoke STOKE");
                 }
 
@@ -150,12 +139,13 @@ public class SingleProduct extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<com.example.biniyam.mint.Model.Product.SingleProduct> call, Throwable t) {
-                Toast.makeText(SingleProduct.this, "Error while loading data", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Product> call, Throwable t) {
+                Toast.makeText(SingleProduct.this, t + "Error while loading data", Toast.LENGTH_SHORT).show();
+
             }
+
         });
 
-
     }
-
 }
+

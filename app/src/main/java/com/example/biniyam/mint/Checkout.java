@@ -12,10 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
+
 import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Common.CurrentUser;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
@@ -31,7 +28,7 @@ public class Checkout extends AppCompatActivity {
     String transactionmethod="cbe birr";
     int paymentChoice;
     String paymentMethod;
-    SliderLayout sliderLayout;
+
     AdulisApi adulisApi;
     MaterialRippleLayout submitButton;
     CurrentUser currentUser;
@@ -113,7 +110,7 @@ public class Checkout extends AppCompatActivity {
 
     private void initView() {
 
-        sliderLayout = (SliderLayout)findViewById(R.id.slider);
+
         firstname=(EditText)findViewById(R.id.firstname);
         lastname=(EditText)findViewById(R.id.lastname);
         companyname=(EditText)findViewById(R.id.companyname);
@@ -128,41 +125,6 @@ public class Checkout extends AppCompatActivity {
         password=(EditText)findViewById(R.id.password);
 
 
-        TextSliderView textSliderView1 = new TextSliderView(Checkout.this);
-        TextSliderView textSliderView2 = new TextSliderView(Checkout.this);
-        TextSliderView textSliderView3 = new TextSliderView(Checkout.this);
-
-        textSliderView1.description("Cash on delivery").image(R.drawable.banner1).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView2.description("CBE Birr").image(R.drawable.banner).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView3.description("Oro cash").image(R.drawable.banner3).setScaleType(BaseSliderView.ScaleType.Fit);
-        sliderLayout.addSlider(textSliderView1);
-        sliderLayout.addSlider(textSliderView2);
-        sliderLayout.addSlider(textSliderView3);
-
-        sliderLayout.stopAutoCycle();
-        sliderLayout.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                 paymentChoice=sliderLayout.getCurrentPosition();
-                 //disable password field for cash on delivery
-                if (paymentChoice==1){
-                    password.setEnabled(false);
-                }
-                else{
-                    password.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
     }
 

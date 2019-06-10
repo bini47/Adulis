@@ -24,17 +24,7 @@
             android:layout_height="250.0dip"
             android:layout_weight="1.0">
 
-            <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/slider"
-
-                android:background="@color/grey_40"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                app:layout_constraintHorizontal_bias="0.0"
-
-                app:layout_constraintVertical_bias="0.0"/>
+             
 
 
         </RelativeLayout>

@@ -1,40 +1,51 @@
 package com.example.biniyam.mint.Model.Product;
 
+import com.example.biniyam.mint.Model.Product.Date;
+import com.example.biniyam.mint.Model.Product.Department;
+import com.example.biniyam.mint.Model.Product.Manufacture;
+import com.example.biniyam.mint.Model.Product.Rating;
+import com.example.biniyam.mint.Model.Product.ShippingDetails;
+
 import java.util.List;
 
-public class Product
-{
-    public String _id ;
-    public String pname ;
-    public String price ;
-    public String image ;
-    public int stokeamount ;
-    public String description ;
-    public int __v ;
-    public List<Object> tags ;
-    public Rating rating ;
-    public Department department ;
-    public List<Object> comments ;
-    public String view ;
-    public List<Manufacture> manufacture ;
 
-    public Product() {
-    }
+public class Product {
+    public String _id;
+    public String image;
+    public String pname;
+    public String price;
+    public int stokeamount;
+    public String description;
+    public int __v;
+    public ShippingDetails shipping_details;
+    public List<String> tags;
+    public Rating rating;
+    public Department department;
+    public List<Object> comments;
+    public List<Object> viewedDates;
+    public int view;
+    public int discount;
+    public Manufacture manufacture;
+    public Date date;
 
-    public Product(String _id, String pname, String price, String image, int stokeamount, String description, int __v, List<Object> tags, Rating rating, Department department, List<Object> comments, String view, List<Manufacture> manufacture) {
+    public Product(String _id, String image, String pname, String price, int stokeamount, String description, int __v, ShippingDetails shipping_details, List<String> tags, Rating rating, Department department, List<Object> comments, List<Object> viewedDates, int view, int discount, Manufacture manufacture, Date date) {
         this._id = _id;
+        this.image = image;
         this.pname = pname;
         this.price = price;
-        this.image = image;
         this.stokeamount = stokeamount;
         this.description = description;
         this.__v = __v;
+        this.shipping_details = shipping_details;
         this.tags = tags;
         this.rating = rating;
         this.department = department;
         this.comments = comments;
+        this.viewedDates = viewedDates;
         this.view = view;
+        this.discount = discount;
         this.manufacture = manufacture;
+        this.date = date;
     }
 
     public String get_id() {
@@ -43,6 +54,14 @@ public class Product
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getPname() {
@@ -59,14 +78,6 @@ public class Product
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getStokeamount() {
@@ -93,11 +104,19 @@ public class Product
         this.__v = __v;
     }
 
-    public List<Object> getTags() {
+    public ShippingDetails getShipping_details() {
+        return shipping_details;
+    }
+
+    public void setShipping_details(ShippingDetails shipping_details) {
+        this.shipping_details = shipping_details;
+    }
+
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<Object> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
@@ -125,19 +144,43 @@ public class Product
         this.comments = comments;
     }
 
-    public String getView() {
+    public List<Object> getViewedDates() {
+        return viewedDates;
+    }
+
+    public void setViewedDates(List<Object> viewedDates) {
+        this.viewedDates = viewedDates;
+    }
+
+    public int getView() {
         return view;
     }
 
-    public void setView(String view) {
+    public void setView(int view) {
         this.view = view;
     }
 
-    public List<Manufacture> getManufacture() {
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public Manufacture getManufacture() {
         return manufacture;
     }
 
-    public void setManufacture(List<Manufacture> manufacture) {
+    public void setManufacture(Manufacture manufacture) {
         this.manufacture = manufacture;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

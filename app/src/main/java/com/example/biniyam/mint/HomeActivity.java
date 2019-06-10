@@ -24,9 +24,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
 import com.example.biniyam.mint.CartalogeAdaprter.MyCatalogue;
 import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Common.CurrentUser;
@@ -50,7 +48,7 @@ public class HomeActivity extends Fragment {
     Button comments;
     ImageButton dashboard;
     LinearLayout signup;
-    SliderLayout sliderLayout;
+
     RecyclerView trendingRecycler, recomendedRecycler, featuredRecycler, topProducersresycler;
     View rootView;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -71,12 +69,10 @@ public class HomeActivity extends Fragment {
         featuredRecycler = (RecyclerView) rootView.findViewById(R.id.featuredRecycler);
         topProducersresycler = (RecyclerView) rootView.findViewById(R.id.topproducersRecycler);
 
-        sliderLayout = (SliderLayout) rootView.findViewById(R.id.slider);
+
         loadTotalCartAmount();
 
-        TextSliderView textSliderView1 = new TextSliderView(getContext());
-        TextSliderView textSliderView2 = new TextSliderView(getContext());
-        TextSliderView textSliderView3 = new TextSliderView(getContext());
+
 
          currentUser = new CurrentUser(getContext());
          String token = currentUser.getToken();
@@ -85,13 +81,6 @@ public class HomeActivity extends Fragment {
              signup.setVisibility(View.GONE);
          }
 
-
-        textSliderView1.description("im commin").image(R.drawable.banner1).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView2.description("no credit cards").image(R.drawable.banner).setScaleType(BaseSliderView.ScaleType.Fit);
-        textSliderView3.description("jef bezos nightmare").image(R.drawable.banner3).setScaleType(BaseSliderView.ScaleType.Fit);
-        sliderLayout.addSlider(textSliderView1);
-        sliderLayout.addSlider(textSliderView2);
-        sliderLayout.addSlider(textSliderView3);
 
 
         ArrayList<String> pnames = new ArrayList<>();

@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 public class Common {
 
     public static String currentProductId = null;
-    public static SingleProduct currentProduct = null;
+    public static Product currentProduct = null;
     public static String currentUsertoken=null;
     public static String CurrentUser=null;
     public static AdulisApi getApi(){

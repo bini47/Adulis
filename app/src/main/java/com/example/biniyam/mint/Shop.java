@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Shop extends Fragment {
 
@@ -44,77 +45,31 @@ public class Shop extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
         rootView = inflater.inflate(R.layout.activity_shop, container, false);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
+        // We need to use the SupportActionBar from android.support.v7.app.ActionBar until the minimum API is >= 21.
+        Toolbar supportAppBar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) rootView.findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+
+
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+
+        mViewPager.setAdapter(new SectionsPagerAdapter(getFragmentManager()));
+        // Set up the ViewPager with the sections adapter.
+
+
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+         tabLayout.setupWithViewPager(mViewPager);
 
 
-
-        return  rootView;
+        return rootView;
     }
 
 
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
-            return rootView;
-        }
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -127,36 +82,44 @@ public class Shop extends Fragment {
         }
 
         @Override
-        public Fragment getItem(int position) {
-            switch (position) {
+        public Fragment getItem(int tab) {
+            return CategoryTabFragment.createTab(tab);
+        }
+        @Override
+        // Get the name of each tab.  Tab numbers start at 0.
+        public CharSequence getPageTitle(int tab) {
+            switch (tab) {
                 case 0:
-                    AllProducts products= new AllProducts();
-                    bundle.putString("cata", "all");
-                    products.setArguments(bundle);
-                    return new AllProducts();
+                    return getString(R.string.tab_text_0);
 
                 case 1:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_1);
 
                 case 2:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_2);
+
                 case 3:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_3);
+
                 case 4:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_4);
+
                 case 5:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_5);
+
                 case 6:
-                    return new AllProducts();
+                    return getString(R.string.tab_text_6);
+                case 7:
+                    return getString(R.string.tab_text_7);
 
-
+                default:
+                    return "";
             }
-            return null;
         }
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 7;
+            // Show 8 total pages.
+            return 8;
         }
     }
 }
