@@ -55,4 +55,5 @@
     <string name="didnothavanaccount">Don\'t have an account? Sign up.</string>
     <string name="title_activity_checkout">Checkout</string>
     <string name="all">All</string>
+    <string name="title_activity_category_holder">CategoryHolder</string>
 </resources>

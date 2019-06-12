@@ -1,4 +1,4 @@
-package com.example.biniyam.mint;
+package com.example.biniyam.mint.Categories;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.biniyam.mint.CartalogeAdaprter.ProdutAdapter;
 import com.example.biniyam.mint.Common.Common;
 import com.example.biniyam.mint.Model.Product.Product;
+import com.example.biniyam.mint.R;
 import com.example.biniyam.mint.Retrofit.AdulisApi;
 
 import java.util.List;
@@ -24,14 +25,15 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class AllProducts  extends Fragment {
+public class HouseHold extends Fragment {
 
+    private String CATEGORY_NAME="household";
     View rootView;
     AdulisApi adulisApi;
     RecyclerView product_recycler;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     SwipeRefreshLayout refresh;
-     AlertDialog alertDialog;
+    AlertDialog alertDialog;
     @Override
     public void onStop() {
         compositeDisposable.clear();
@@ -45,20 +47,18 @@ public class AllProducts  extends Fragment {
         rootView = inflater.inflate(R.layout.all_products_layout, container, false);
 
          adulisApi = Common.getApi();
-
-
-            //PRE-LOADER
-         alertDialog= new
-         SpotsDialog.Builder().setContext(getContext()).build();
-         alertDialog.setTitle("Please wait...");
-
-
          //init view
          product_recycler = (RecyclerView)rootView.findViewById(R.id.product_recycler);
         product_recycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         product_recycler.setHasFixedSize(true);
 
-         refresh= (SwipeRefreshLayout)rootView.findViewById(R.id.refresh);
+        //PRE-LOADER
+        alertDialog= new
+                SpotsDialog.Builder().setContext(getContext()).build();
+        alertDialog.setTitle("Please wait...");
+
+
+        refresh= (SwipeRefreshLayout)rootView.findViewById(R.id.refresh);
          refresh.setColorSchemeResources(R.color.colorAccent,
                  android.R.color.holo_green_dark,
                  android.R.color.holo_blue_dark,
@@ -96,17 +96,17 @@ public class AllProducts  extends Fragment {
     }
 
     private void fetchProducts() {
-
         alertDialog.show();
-        compositeDisposable.add(adulisApi.getProducts()
-        .subscribeOn(Schedulers.io())
+        compositeDisposable.add(adulisApi.getCategory(CATEGORY_NAME)
+
+                .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
                 new Consumer<List<Product>>() {
                     @Override
                     public void accept(List<Product> products) throws Exception {
+                        alertDialog.hide();
                        refresh.setRefreshing(false);
-                       alertDialog.hide();
                         displayProductList(products);
                     }
                 }, new Consumer<Throwable>() {

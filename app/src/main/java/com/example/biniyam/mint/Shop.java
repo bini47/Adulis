@@ -19,7 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.biniyam.mint.Categories.Bedroom;
+import com.example.biniyam.mint.Categories.Clothing;
+import com.example.biniyam.mint.Categories.Electronics;
+import com.example.biniyam.mint.Categories.HouseHold;
+import com.example.biniyam.mint.Categories.Industrial;
+import com.example.biniyam.mint.Categories.Shoes;
+import com.example.biniyam.mint.Categories.Vehicle;
 
 public class Shop extends Fragment {
 
@@ -45,31 +52,77 @@ public class Shop extends Fragment {
                              Bundle savedInstanceState) {
 
 
+
         rootView = inflater.inflate(R.layout.activity_shop, container, false);
-        // We need to use the SupportActionBar from android.support.v7.app.ActionBar until the minimum API is >= 21.
-        Toolbar supportAppBar = (Toolbar) rootView.findViewById(R.id.toolbar);
-
-        mViewPager = (ViewPager) rootView.findViewById(R.id.container);
-
-        TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
-
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
 
-        mViewPager.setAdapter(new SectionsPagerAdapter(getFragmentManager()));
         // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) rootView.findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
+        TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-         tabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
-        return rootView;
+
+        return  rootView;
     }
 
 
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public PlaceholderFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static PlaceholderFragment newInstance(int sectionNumber) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
+            return rootView;
+        }
+    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -82,39 +135,27 @@ public class Shop extends Fragment {
         }
 
         @Override
-        public Fragment getItem(int tab) {
-            return CategoryTabFragment.createTab(tab);
-        }
-        @Override
-        // Get the name of each tab.  Tab numbers start at 0.
-        public CharSequence getPageTitle(int tab) {
-            switch (tab) {
+        public Fragment getItem(int position) {
+            switch (position) {
                 case 0:
-                    return getString(R.string.tab_text_0);
-
+                    return new AllProducts();
                 case 1:
-                    return getString(R.string.tab_text_1);
-
+                    return new Clothing();
                 case 2:
-                    return getString(R.string.tab_text_2);
-
+                    return new Shoes();
                 case 3:
-                    return getString(R.string.tab_text_3);
-
+                    return new Electronics();
                 case 4:
-                    return getString(R.string.tab_text_4);
-
+                    return new HouseHold();
                 case 5:
-                    return getString(R.string.tab_text_5);
-
+                    return new Bedroom();
                 case 6:
-                    return getString(R.string.tab_text_6);
+                    return new Industrial();
                 case 7:
-                    return getString(R.string.tab_text_7);
+                    return new Vehicle();
 
-                default:
-                    return "";
             }
+            return null;
         }
         @Override
         public int getCount() {

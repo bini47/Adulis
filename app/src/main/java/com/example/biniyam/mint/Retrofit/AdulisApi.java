@@ -64,4 +64,9 @@ public interface AdulisApi {
 
     @GET("/order/view")
     Observable<List<Order>> myOrders(@Header("Authorization") String authTooken);
+
+     @GET("/products/catagory/{category}")
+    Observable<List<Product>> getCategory(@Path("category") String Category);
+
+
 }

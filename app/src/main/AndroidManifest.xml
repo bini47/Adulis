@@ -15,9 +15,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CategoryHolder"
+            android:label="@string/title_activity_category_holder"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Checkout"
             android:label="@string/title_activity_checkout"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SingleProduct"
             android:label="@string/title_activity_single_product"
